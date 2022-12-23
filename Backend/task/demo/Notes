@@ -1,0 +1,23 @@
+===== address =======
+http://localhost:8080/api/addresses?address=No.35,Indra Nagar,Kattankulathur&stateandcountry=TN,India&pincode=603203
+
+===== creditscore ======
+http://localhost:8080/api/creditcheck?username=ccc
+
+===== account ======
+http://localhost:8080/api/accounts
+
+{
+   "accountType" : "John",
+   "address"  :"Smith",
+   "creditScore" : 10,
+   "email" : 10,
+   "fName" : 10,
+   "gender" : 10,
+   "number" : 10,
+   "pincode" : 10,
+   "stateAndCountry" : 10
+}
+
+===== getaccount ======
+http://localhost:8080/api/getaccount

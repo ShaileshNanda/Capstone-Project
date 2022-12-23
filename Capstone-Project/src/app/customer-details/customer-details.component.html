@@ -1,0 +1,103 @@
+<div class="container h-100">
+  <div class="row justify-content-center align-items-center h-100">
+    <div class="col-12 col-lg-10">
+      <div class="card shadow-2-strong card-registration" style="border-radius: 15px">
+        <div class="card-body p-4">
+          <h3 class="mb-4 pb-2 pb-md-0">Customer Registration Form</h3>
+          <form #userDetails = "ngForm" (ngSubmit)="onSubmit()" class="row">   
+              <div class="col-md-4 mb-4 form-group align-items-center">
+                <label for="userName" class="form-label formFields">User Name</label>
+                <input type="text" name="userName" class="form-control" [(ngModel)]="customer.userName" placeholder=" Enter User Name" #userName="ngModel" disabled={{dataSubmitted}} required>
+                <span *ngIf="userName.invalid && (userName.dirty || userName.touched)"class="alert" style="position: absolute">
+                <span *ngIf="userName.errors?.['required']"> User Name is required </span>
+              </span> 
+              </div>
+              <div class="col-md-6 mb-4 form-group align-items-center">
+                <label class="form-label formFields" for="email">Email Id</label> 
+                <input type="email" pattern=".+@gmail\.com" name="email" class="form-control" placeholder=" Enter Email ID"
+                [(ngModel)]="customer.email" #email="ngModel" disabled={{dataSubmitted}} required>
+                <span *ngIf="email.invalid && (email.dirty || email.touched)"class="alert" style="position: absolute">
+                  <span *ngIf="email.errors?.['required'] "> Email ID is required </span>
+                  <span *ngIf="email.errors?.['pattern']"> Email ID is incorrect </span>
+                </span> 
+              </div>
+              <div class="row">
+              <div class="col-md-6 mb-4 align-items-center form-group">
+                  <label for="addressLineOne" class="form-label formFields">Address line 1</label>
+                  <input type="text" name="address" class="form-control" disabled={{dataSubmitted}} placeholder="Enter Address"
+                  [(ngModel)]="customer.address" #address="ngModel" required/>
+                  <span *ngIf="address.invalid && (address.dirty || address.touched)"class="alert" style="position: absolute">
+                    <span *ngIf="address.errors?.['required']">Address is required </span>
+                  </span>
+                   <span class="alert" *ngIf="addressErrors"> {{addressErrors.error.message}}</span>
+              </div>
+              <div class=" col-md-6 mb-4 form-group align-items-center">
+                  <label for="stateAndCountry" class="form-label formFields">State and Country</label>
+                  <input type="text" name="stateAndCountry" class="form-control" disabled={{dataSubmitted}} placeholder="Enter State and Country"
+                  [(ngModel)]="customer.stateAndCountry" #statecountry="ngModel" required/>
+                  <span *ngIf="statecountry.invalid && (statecountry.dirty || statecountry.touched)"class="alert" style="position: absolute">
+                    <span *ngIf="statecountry.errors?.['required']">State and Country is required </span>
+                  </span>
+                  <span class="alert" *ngIf="addressErrors"> {{addressErrors.error.message}}</span>
+              </div>
+              <div class="col-md-6 mb-4 pb-2 form-group">
+                <label class="form-label formFields" for="pincode">Pincode</label>
+                <input type="number" name="pincode" class="form-control" disabled={{dataSubmitted}} placeholder="Enter Pincode"
+                [(ngModel)]="customer.pincode" #pincode="ngModel" required/>
+                <span *ngIf="pincode.invalid && (pincode.dirty || pincode.touched)"class="alert" style="position: absolute">
+                  <span *ngIf="pincode.errors?.['required']">Pincode is required </span>
+                </span>
+                <span class="alert" *ngIf="addressErrors"> {{addressErrors.error.message}}</span>
+                </div>
+              <div class="col-md-6 mb-4 pb-2 form-group">
+                <label class="form-label formFields" for="phoneNumber">Phone Number</label>
+                <input name="number" type="number" class="form-control" disabled={{dataSubmitted}} minlength="10" placeholder="Enter Phone Number"
+                [(ngModel)]="customer.number" #number="ngModel" required/>
+                <span *ngIf="number.invalid && (number.dirty || number.touched)"class="alert" style="position: absolute">
+                  <span *ngIf="number.errors?.['required']">Number is required </span>
+                  <span *ngIf="number.errors?.['minlength']">Minimum 10 numbers expected </span>
+                </span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <h6 class="mb-2 pb-1 formFields">Gender:</h6>
+                <div class="form-check form-check-inline form-group">
+                  <input class="form-check-input" type="radio" name="gender" value="Female" 
+                  [(ngModel)]="customer.gender" disabled={{dataSubmitted}}/>
+                  <label class="form-check-label" for="femaleGender">Female</label>
+                </div>
+                <div class="form-check form-check-inline form-group">
+                  <input class="form-check-input" type="radio" name="gender" value="Male" 
+                  [(ngModel)]="customer.gender" disabled={{dataSubmitted}}/>
+                  <label class="form-check-label" for="maleGender">Male</label>
+                </div>
+                <div class="form-check form-check-inline form-group">
+                  <input class="form-check-input" type="radio" name="gender" value="Other" 
+                  [(ngModel)]="customer.gender" disabled={{dataSubmitted}}/>
+                  <label class="form-check-label" for="otherGender">Other</label>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4 pb-2 form-group">
+                <label class="form-label select-label formFields">Account Type</label>
+                <br>
+                <select name="accountType" class="select" [(ngModel)]="customer.accountType" #aType="ngModel" disabled={{dataSubmitted}} required>
+                  <option value="current account">Current Account</option>
+                  <option value="savings account">Savings Account</option>
+                  <option value="business account">Business Account</option>
+                </select>
+                <span *ngIf="aType.invalid && (aType.dirty || aType.touched)"class="alert" style="position: absolute">
+                  <span *ngIf="aType.errors?.['required']">Account Type is required </span>
+                </span>
+              </div>
+            </div>
+            <div class="pt-2">
+              <input class="btn btn-primary btn-lg" type="submit" value="Submit"/>
+            </div>
+            <span class="success-message" *ngIf="!addressErrors && !creditError && !errors && submitted"> Customer registration success</span>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

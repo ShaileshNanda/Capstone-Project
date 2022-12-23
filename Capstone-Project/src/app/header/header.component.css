@@ -1,0 +1,8 @@
+.text-small {
+  font-size: 85%;
+  padding-top: 0.5rem;
+}
+
+.active{
+  background-color: black;
+}

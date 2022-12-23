@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="px-3 py-2 bg-dark text-white ">
+      <div class="container">
+        <div
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+        >
+          <a
+            href="/"
+            class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none"
+          >
+            Customer onboarding application</a
+          >
+          <ul
+            class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small"
+          >
+            <li>
+              <a
+                routerLink="/"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="nav-link text-white"
+              >
+              <i class="bi bi-house-door"></i> Home
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/customer-details"
+                routerLinkActive="active"
+                class="nav-link text-white"
+              >
+              <i class="bi bi-person-add"></i> Customer Registration
+              </a>
+            </li>
+            <li>
+              <a routerLink="/customer-help"
+              routerLinkActive="active"
+              class="nav-link text-white"> <i class="bi bi-info-circle"></i> Help </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
