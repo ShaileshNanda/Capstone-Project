@@ -25,7 +25,7 @@
               <div class="col-md-6 mb-4 align-items-center form-group">
                   <label for="addressLineOne" class="form-label formFields">Address line 1</label>
                   <input type="text" name="address" class="form-control" disabled={{dataSubmitted}} placeholder="Enter Address"
-                  [(ngModel)]="customer.address" #address="ngModel" required/>
+                  [(ngModel)]="customer.address" #address="ngModel" minlength="6" required/>
                   <span *ngIf="address.invalid && (address.dirty || address.touched)"class="alert" style="position: absolute">
                     <span *ngIf="address.errors?.['required']">Address is required </span>
                   </span>
@@ -40,22 +40,23 @@
                   </span>
                   <span class="alert" *ngIf="addressErrors"> {{addressErrors.error.message}}</span>
               </div>
-              <div class="col-md-6 mb-4 pb-2 form-group">
+              <div class="col-md-6 mb-4 pb-2 align-items-center form-group">
                 <label class="form-label formFields" for="pincode">Pincode</label>
                 <input type="number" name="pincode" class="form-control" disabled={{dataSubmitted}} placeholder="Enter Pincode"
-                [(ngModel)]="customer.pincode" #pincode="ngModel" required/>
+                [(ngModel)]="customer.pincode" #pincode="ngModel" min="99999" required/>
                 <span *ngIf="pincode.invalid && (pincode.dirty || pincode.touched)"class="alert" style="position: absolute">
                   <span *ngIf="pincode.errors?.['required']">Pincode is required </span>
+                  <span *ngIf="pincode.errors?.['min']">Pincode should be of 6 digits</span>
                 </span>
                 <span class="alert" *ngIf="addressErrors"> {{addressErrors.error.message}}</span>
                 </div>
               <div class="col-md-6 mb-4 pb-2 form-group">
                 <label class="form-label formFields" for="phoneNumber">Phone Number</label>
-                <input name="number" type="number" class="form-control" disabled={{dataSubmitted}} minlength="10" placeholder="Enter Phone Number"
-                [(ngModel)]="customer.number" #number="ngModel" required/>
-                <span *ngIf="number.invalid && (number.dirty || number.touched)"class="alert" style="position: absolute">
+                <input name="number" type="number" class="form-control" disabled={{dataSubmitted}} placeholder="Enter Phone Number"
+                [(ngModel)]="customer.number" #number="ngModel" min="999999999" required/>
+                <span *ngIf="number.invalid && (number.dirty || number.touched)" class="alert" style="position: absolute">
                   <span *ngIf="number.errors?.['required']">Number is required </span>
-                  <span *ngIf="number.errors?.['minlength']">Minimum 10 numbers expected </span>
+                  <span *ngIf="number.errors?.['min']">Minimum 10 numbers expected </span>
                 </span>
               </div>
             </div>

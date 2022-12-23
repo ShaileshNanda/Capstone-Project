@@ -27,9 +27,9 @@ public class Add {
 	UserDto user1 = new UserDto("shailesh", "No.35,IndraNagar,Chennai", "555", "aaa@gmail.com", "savings", "male",
 			"9876543212", "603203", "TN,India");
 	UserDto user2 = new UserDto("ramesh", "No.45,IndraNagar,Bangalore", "666", "bbb@gmail.com", "savings", "female",
-			"6789065432", "603204", "KA,India");
+			"6789065432", "607983", "KA,India");
 	UserDto user3 = new UserDto("patel", "No.55,IndraNagar,Mumbai", "777", "ccc@gmail.com", "savings", "male",
-			"8907654567", "603205", "MH,India");
+			"8907654567", "100061", "MH,India");
 
 	@GetMapping("addresses")
 	@ResponseBody
